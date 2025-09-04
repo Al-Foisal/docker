@@ -1,55 +1,51 @@
-All Docker command
+# All Docker command
 
-docker run node=>to get pre-build images
+- `docker run IMAGE`: to get pre-build images
 
-docker ps -a => all container process of conainer by docker
+- `docker ps -a`: all container process of conainer by docker
 
-docker run -it node => expose an interactive session inside the container to our host machine and this will make interactive terminal where we run node command
+- `docker run -it IMAGE`: expose an interactive session inside the container to our host machine and this will make interactive terminal where we run node command
 
-docker ps => display all the active container only
+- `docker ps`: display all the active container only
 
-docker build . => build custom image based on Docker file
+- `docker build .`: build custom image based on Docker file
 
-docker run -p <local-port>:<dockerfile-port> <imageid> => this will run the container and run our server
+- `docker run -p LOCAL_PORT:DOCKER_FILE_PORT IMAGEID`: this will run the container and run our server
+> - `-p` for publish the image
+> - `--rm` for automatically delete container when the container will stop
+> - `--name IMAGE` for custom container name
+> - `-d` for run our server in detached mode
 
-docker run -p <local-port>:<dockerfile-port> --rm <imageid> => this will run the container and run our server and automatically delete container when the container will stop
+- `docker attach CONTAINER`: open running container in attached mode
 
-docker run -p <local-port>:<dockerfile-port> --name <custom-container-name> <imageid> => this will run the container and run our server with custom container name
+- `docker logs CONTAINER`: display all the logs under a container
 
-docker run -p <local-port>:<dockerfile-port> -d <imageid> => this will run the container and run our server in detached mode
+- `docker logs -f CONTAINER`: continously display all the logs under a container in attached mode
 
-docker run -it <imageid> => this will run the container and able terminal for interactive input even if not attached after that container will stop automatically (-it is the short form of -i and -t)
+- `docker start CONTAINER`: start the respective container in detached mode by default
 
-docker attach <container-name> => attached with running container
+- `docker start -a CONTAINER`: start the respective container in attached mode
 
-docker logs <container-name> => display all the logs under a container
+- `docker start -a -i CONTAINER`: start the respective container in attached mode and able terminal for interactive input
 
-docker logs -f <container-name> => continously display all the logs under a container in attached mode
+- `docker stop CONTAINER`: stop the respective container
 
-docker start <container-name> => start the respective container in detached mode by default
+- `docker rm CONTAINER`: remove container by placing container name use " "(space) to delete multiple container and seperate them by space
 
-docker start -a <container-name> => start the respective container in attached mode
+- `docker rmi IMAGE`: remove image by placing imageid use " "(space) to delete multiple image and seperate them by space
 
-docker start -a -i <container-name> => start the respective container in attached mode and able terminal for interactive input
+- `docker images`: get all the images
 
-docker stop <container-name> => stop the respective container
+- `docker image inspect IMAGE`: get respective image details
 
-docker rm <container-name> => remove container by placing container name use " "(space) to delete multiple container and seperate them by space
+- `docker cp LOCAL_PATH/. CONTAINER:/CONTAINER_PATH`: copy all the file from local machile to to a container
 
-docker rmi <imageid> => remove image by placing imageid use " "(space) to delete multiple image and seperate them by space
+- `docker cp CONTAINER:/CONTAINER_PATH LOCAL_PATH`: copy from docker container to local machine
 
-docker images => get all the images
+- `docker build -t IMAGE_NAME:IMAGE_TAG .`: custom image name
 
-docker image inspect <imageid> => get respective image details
+- `docker tag IMAGE_NAME:IMAGE_TAG REPO_NAME:TAG_NAME`: rename docker image
 
-docker cp <local-folder>/. <container-name>:/<container-folder> => copy all the file from local machile to to a container
+- `docker push REPO_NAME`: push docker image to DockerHub (you must have to login before push)
 
-docker cp <container-name>:/<container-folder-path> <local-folder>
-
-docker build -t <image-name>:<image-path> . => custom image name
-
-docker tag <image-name>:<tag-name> <reponame>:<tagname> => rename docker image
-
-docker push <repo-name> => push docker image to DockerHub (you must have to login before push)
-
-docker image prune -a => delete all the images
+- `docker image prune -a`: delete all the images
