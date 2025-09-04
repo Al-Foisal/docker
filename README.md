@@ -14,6 +14,8 @@ docker run -p <local-port>:<dockerfile-port> <imageid> => this will run the cont
 
 docker run -p <local-port>:<dockerfile-port> --rm <imageid> => this will run the container and run our server and automatically delete container when the container will stop
 
+docker run -p <local-port>:<dockerfile-port> --name <custom-container-name> <imageid> => this will run the container and run our server with custom container name
+
 docker run -p <local-port>:<dockerfile-port> -d <imageid> => this will run the container and run our server in detached mode
 
 docker run -it <imageid> => this will run the container and able terminal for interactive input even if not attached after that container will stop automatically (-it is the short form of -i and -t)
@@ -43,3 +45,11 @@ docker image inspect <imageid> => get respective image details
 docker cp <local-folder>/. <container-name>:/<container-folder> => copy all the file from local machile to to a container
 
 docker cp <container-name>:/<container-folder-path> <local-folder>
+
+docker build -t <image-name>:<image-path> . => custom image name
+
+docker tag <image-name>:<tag-name> <reponame>:<tagname> => rename docker image
+
+docker push <repo-name> => push docker image to DockerHub (you must have to login before push)
+
+docker image prune -a => delete all the images
